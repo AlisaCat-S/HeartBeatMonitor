@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: List files in release folder
-        run: dir /s /b release\
+        run: dir
 
 
       - name: Upload Artifact
