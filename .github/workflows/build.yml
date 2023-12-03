@@ -32,14 +32,6 @@ jobs:
         with:
           node-version: 14
 
-      - name: Cache Dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
       - name: Install Dependencies
         run: npm install
 
@@ -50,11 +42,7 @@ jobs:
           
       - name: Filter Files
         run: |
-          mkdir filtered
-          mv release/*.exe filtered/
-          Remove-Item -Recurse -Force release/*
-          mv filtered/* release/
-          Remove-Item -Recurse -Force filtered
+          Remove-Item -Recurse -Force release/win-unpacked
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
