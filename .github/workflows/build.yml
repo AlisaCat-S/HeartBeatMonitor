@@ -41,7 +41,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
 
       - name: List files in release folder
-        run: dir
+        run: Get-ChildItem -Path "release" -Recurse
 
 
       - name: Upload Artifact
